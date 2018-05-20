@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Sort from '@/pages/sort/index.vue'
 import Selection from '@/pages/sort/Selection'
+import Monkey from '@/pages/sort/Monkey'
 
 Vue.use(Router)
 
@@ -20,6 +21,10 @@ export default new Router({
         {
           path: 'selection',
           component: Selection
+        },
+        {
+          path: 'monkey',
+          component: Monkey
         }
       ]
     }

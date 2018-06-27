@@ -112,15 +112,13 @@ export default {
                     await delay(this.duration / 6)
                 }
 
-                if (i < r) {
+                if (i < r && l < j) {
                     for (let _ = 0; _ < 3; ++_) {
                         this.pointer = Object.assign(this.pointer, { l: i, r })
                         await delay(this.duration / 8)
                         this.pointer = Object.assign(this.pointer, { l, r })
                         await delay(this.duration / 8)
                     }
-                }
-                if (l < j) {
                     for (let _ = 0; _ < 3; ++_) {
                         this.pointer = Object.assign(this.pointer, { l, r: j })
                         await delay(this.duration / 8)

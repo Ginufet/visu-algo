@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h2>选择排序</h2>
+        <h2>冒泡排序</h2>
         <transition-group name="flip-list" tag="div" class="list">
             <div
                 class="item"
@@ -67,20 +67,23 @@ export default {
             })
         },
         async sort () {
-            const len = this.len
-            for (let i = 0; i < len - 1; ++i) {
-                this.pointer = Object.assign(this.pointer, { i })
-                for (let j = i + 1; j < len; ++j) {
-
-                    this.pointer = Object.assign(this.pointer, { j })
+            let len = this.len
+            let unsorted = false
+            do {
+                unsorted = false
+                for (let i = 0; i < len - 1; ++i) {
+                    const j = i + 1
+                    this.pointer = Object.assign(this.pointer, { i, j })
                     if (this.array[i] > this.array[j]) {
                         await this.swap(i, j)
+                        unsorted = true
                     } else {
                         await delay(this.duration / 4)
                     }
                     await this.nextStep()
                 }
-            }
+                len --
+            } while (unsorted)
             this.pointer.i = this.pointer.j = this.len
         },
         next () {

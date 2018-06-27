@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import HelloWorld from '@/pages/HelloWorld'
 import Sort from '@/pages/sort/index.vue'
-import Selection from '@/pages/sort/Selection'
-import Monkey from '@/pages/sort/Monkey'
 
 Vue.use(Router)
+
+const views = ['Selection', 'Monkey', 'Bubble', 'Qsort']
 
 export default new Router({
   routes: [
@@ -17,16 +17,11 @@ export default new Router({
     {
       path: '/sort',
       component: Sort,
-      children: [
-        {
-          path: 'selection',
-          component: Selection
-        },
-        {
-          path: 'monkey',
-          component: Monkey
-        }
-      ]
+      children: views.map(name => ({
+        path: name.toLowerCase(),
+        name,
+        component: require(`@/pages/sort/${name}`).default
+      }))
     }
   ]
 })

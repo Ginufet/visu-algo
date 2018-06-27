@@ -1,16 +1,19 @@
 <template>
-    <div>
+    <div class="container">
         <h2>猴子排序</h2>
-        <div id="flip-list-demo" class="demo">
-            <!-- <div>{{step}} - {{stepLock}}</div> -->
-            <div>{{pointer}}</div>
-            <button @click="rush">Sort</button>
-            <button @click="next">Next</button>
-            <transition-group name="flip-list" tag="ul">
-                <li v-for="(item, _) in array" :key="item" :style="{color: _ === pointer.i || _ === pointer.j ? 'red' : 'black'}">
-                {{ item }}
-                </li>
-            </transition-group>
+        <!-- <div>{{step}} - {{stepLock}}</div> -->
+        <!-- <div>{{pointer}}</div> -->
+        <transition-group name="flip-list" tag="div" class="list">
+            <div class="item" v-for="item in array" :key="item" :style="{
+                height: item * 3 + 'px'
+            }">
+                <div class="value">{{ item }}</div>
+            </div>
+        </transition-group>
+
+        <div class="btns">
+            <el-button icon="el-icon-d-arrow-right" @click="rush" round>Sort</el-button>
+            <el-button icon="el-icon-arrow-right" @click="next" round>Next</el-button>
         </div>
     </div>
 </template>
@@ -89,8 +92,35 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+    .container {
+        height: 75vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
     .flip-list-move {
         transition: transform .3s;
     }
+    .list {
+        display: flex;
+        width: 400px;
+        margin: auto;
+        justify-content: space-evenly;
+        align-items: flex-end;
+    }
+    .item {
+        background: #47e09b;
+        width: 15px;
+        border-bottom: 40px solid #fbe59a;
+        position: relative;
+    }
+    .value {
+        position: absolute;
+        bottom: -30px;
+        text-align: center;
+        width: 35px;
+        left: -10px;
+    }
+
 </style>

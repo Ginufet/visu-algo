@@ -5,7 +5,7 @@ import Sort from '@/pages/sort/index.vue'
 
 Vue.use(Router)
 
-const views = ['Selection', 'Monkey', 'Bubble', 'Qsort', 'Insert']
+const views = ['Selection', 'Monkey', 'Bubble', 'Qsort', 'Insert', 'Heap', 'Merge']
 
 export default new Router({
   routes: [

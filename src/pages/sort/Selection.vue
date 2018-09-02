@@ -75,8 +75,7 @@ export default {
             pointer: {i: -1, j: -1},
             step: 0,
             stepLock: 0,
-            code: `
-for (let i = 0; i < len - 1; ++i) {
+            code: `for (let i = 0; i < len - 1; ++i) {
     this.pointer = Object.assign(this.pointer, { i })
     for (let j = i + 1; j < len; ++j) {
 
@@ -210,12 +209,13 @@ for (let i = 0; i < len - 1; ++i) {
     }
     .code {
         text-align: left;
+        justify-content: center;
     }
 
     .array, .code, .numbers {
         flex: 1;
     }
-    .array {
+    .code, .array {
         display: flex;
         flex-direction: column;
     }

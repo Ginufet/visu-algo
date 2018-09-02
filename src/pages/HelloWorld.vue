@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <div v-for="{name} in pages" :key="name">
-      <router-link :to="{name}">{{name}}</router-link>
+      <router-link :to="{name:  'desc_' + name}">{{name}}</router-link>
     </div>
   </div>
 </template>
